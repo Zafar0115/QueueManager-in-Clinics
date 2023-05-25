@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Z7hWZcS9AjRXLQS35uQHG12sl1Gbp3XYqVxhOvm8buo=",
+  "Source": "QueueManager.UI",
+  "BasePath": "_content/QueueManager.UI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

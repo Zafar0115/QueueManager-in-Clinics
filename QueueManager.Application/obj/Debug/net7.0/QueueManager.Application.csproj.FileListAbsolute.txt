@@ -1,0 +1,17 @@
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\bin\Debug\net7.0\QueueManager.Application.deps.json
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\bin\Debug\net7.0\QueueManager.Application.runtimeconfig.json
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\bin\Debug\net7.0\QueueManager.Application.dll
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\bin\Debug\net7.0\QueueManager.Application.pdb
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\bin\Debug\net7.0\QueueManager.Domain.dll
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\bin\Debug\net7.0\QueueManager.Domain.pdb
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\obj\Debug\net7.0\QueueManager.Application.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\obj\Debug\net7.0\QueueManager.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\obj\Debug\net7.0\QueueManager.Application.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\obj\Debug\net7.0\QueueManager.Application.AssemblyInfo.cs
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\obj\Debug\net7.0\QueueManager.Application.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\obj\Debug\net7.0\QueueManager.Application.csproj.CopyComplete
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\obj\Debug\net7.0\QueueManager.Application.dll
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\obj\Debug\net7.0\refint\QueueManager.Application.dll
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\obj\Debug\net7.0\QueueManager.Application.pdb
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\obj\Debug\net7.0\QueueManager.Application.genruntimeconfig.cache
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Application\obj\Debug\net7.0\ref\QueueManager.Application.dll

@@ -1,0 +1,17 @@
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\bin\Debug\net7.0\QueueManager.Infrastructure.deps.json
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\bin\Debug\net7.0\QueueManager.Infrastructure.dll
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\bin\Debug\net7.0\QueueManager.Infrastructure.pdb
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\bin\Debug\net7.0\QueueManager.Application.dll
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\bin\Debug\net7.0\QueueManager.Domain.dll
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\bin\Debug\net7.0\QueueManager.Application.pdb
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\bin\Debug\net7.0\QueueManager.Domain.pdb
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\obj\Debug\net7.0\QueueManager.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\obj\Debug\net7.0\QueueManager.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\obj\Debug\net7.0\QueueManager.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\obj\Debug\net7.0\QueueManager.Infrastructure.AssemblyInfo.cs
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\obj\Debug\net7.0\QueueManager.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\obj\Debug\net7.0\QueueManager.Infrastructure.csproj.CopyComplete
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\obj\Debug\net7.0\QueueManager.Infrastructure.dll
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\obj\Debug\net7.0\refint\QueueManager.Infrastructure.dll
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\obj\Debug\net7.0\QueueManager.Infrastructure.pdb
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Infrastructure\obj\Debug\net7.0\ref\QueueManager.Infrastructure.dll

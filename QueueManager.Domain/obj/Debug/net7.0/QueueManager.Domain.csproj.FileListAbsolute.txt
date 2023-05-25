@@ -1,0 +1,12 @@
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Domain\bin\Debug\net7.0\QueueManager.Domain.deps.json
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Domain\bin\Debug\net7.0\QueueManager.Domain.dll
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Domain\bin\Debug\net7.0\QueueManager.Domain.pdb
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Domain\obj\Debug\net7.0\QueueManager.Domain.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Domain\obj\Debug\net7.0\QueueManager.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Domain\obj\Debug\net7.0\QueueManager.Domain.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Domain\obj\Debug\net7.0\QueueManager.Domain.AssemblyInfo.cs
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Domain\obj\Debug\net7.0\QueueManager.Domain.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Domain\obj\Debug\net7.0\QueueManager.Domain.dll
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Domain\obj\Debug\net7.0\refint\QueueManager.Domain.dll
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Domain\obj\Debug\net7.0\QueueManager.Domain.pdb
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.Domain\obj\Debug\net7.0\ref\QueueManager.Domain.dll
