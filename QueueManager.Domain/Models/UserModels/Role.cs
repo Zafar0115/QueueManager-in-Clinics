@@ -13,9 +13,9 @@ namespace QueueManager.Domain.Models.UserModels
     public class Role:BaseAuditableEntity
     {
         public Guid Id { get; set; }
-        public required string RoleName { get; set; }
-        public virtual ICollection<UserRole>? UserRoles { get; set; }
-        public virtual ICollection<RolePermission>? RolePermissions { get; set; }
+        public string RoleName { get; set; }
+        public virtual ICollection<User>? Users { get; set; }
+        public virtual ICollection<Permission>? Permissions { get; set; }
 
     }
 }

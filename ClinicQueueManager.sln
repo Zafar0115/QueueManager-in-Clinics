@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueManager.Domain", "QueueManager.Domain\QueueManager.Domain.csproj", "{4462E676-2AD2-4210-A2E6-1B86646AD520}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueueManager.Domain", "QueueManager.Domain\QueueManager.Domain.csproj", "{4462E676-2AD2-4210-A2E6-1B86646AD520}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueManager.Infrastructure", "QueueManager.Infrastructure\QueueManager.Infrastructure.csproj", "{AF2907AA-B247-49EB-A7E3-724947C484A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueueManager.Infrastructure", "QueueManager.Infrastructure\QueueManager.Infrastructure.csproj", "{AF2907AA-B247-49EB-A7E3-724947C484A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueManager.Application", "QueueManager.Application\QueueManager.Application.csproj", "{E648C1D7-CE26-4F2A-A8E3-717B628495EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueueManager.Application", "QueueManager.Application\QueueManager.Application.csproj", "{E648C1D7-CE26-4F2A-A8E3-717B628495EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueManager.UI", "QueueManager.UI\QueueManager.UI.csproj", "{CB150FAE-DB21-4CDF-915A-8625A7174CAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueueManager.UI", "QueueManager.UI\QueueManager.UI.csproj", "{CB150FAE-DB21-4CDF-915A-8625A7174CAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{7ED2727A-238F-473E-B2D1-2774B47E787B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{2E04260A-5FE1-4737-A0B3-CF789ACB4828}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{04B7DE59-5D7B-4514-AC5C-E033A2FBEA42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebAPI", "WebAPI", "{4CA978EB-39F2-45E5-A121-669F187494F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +44,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4462E676-2AD2-4210-A2E6-1B86646AD520} = {2E04260A-5FE1-4737-A0B3-CF789ACB4828}
+		{AF2907AA-B247-49EB-A7E3-724947C484A8} = {04B7DE59-5D7B-4514-AC5C-E033A2FBEA42}
+		{E648C1D7-CE26-4F2A-A8E3-717B628495EA} = {7ED2727A-238F-473E-B2D1-2774B47E787B}
+		{CB150FAE-DB21-4CDF-915A-8625A7174CAB} = {4CA978EB-39F2-45E5-A121-669F187494F0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {06731A0C-7DA6-4D10-BA7A-0C79A142B81F}

@@ -1,5 +1,5 @@
-﻿using QueueManager.Application.Abstraction;
-using QueueManager.Application.Interfaces.role;
+﻿using QueueManager.Application.Interfaces.Administration;
+using QueueManager.Application.Interfaces.Common;
 using QueueManager.Domain.Models.UserModels;
 
 namespace QueueManager.Infrastructure.Implementation.userrole
@@ -9,5 +9,6 @@ namespace QueueManager.Infrastructure.Implementation.userrole
         public PermissionRepository(IApplicationDbContext dbContext) : base(dbContext)
         {
         }
+
     }
 }

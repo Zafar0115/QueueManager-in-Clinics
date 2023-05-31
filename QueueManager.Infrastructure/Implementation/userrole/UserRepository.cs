@@ -1,6 +1,6 @@
-﻿using QueueManager.Application.Abstraction;
-using QueueManager.Application.Extensions;
-using QueueManager.Application.Interfaces.role;
+﻿using QueueManager.Application.Extensions;
+using QueueManager.Application.Interfaces.Administration;
+using QueueManager.Application.Interfaces.Common;
 using QueueManager.Domain.Models.UserModels;
 
 namespace QueueManager.Infrastructure.Implementation.userrole
@@ -10,10 +10,12 @@ namespace QueueManager.Infrastructure.Implementation.userrole
         public UserRepository(IApplicationDbContext dbContext) : base(dbContext)
         {
         }
-        public override Task<User?> AddAsync(User entity)
+        public override async Task<User?> AddAsync(User entity)
         {
             entity.Password = entity.Password.ComputeHash();
-            return base.AddAsync(entity);
+            _dbContext.Users.Attach(entity);
+
+            return (await _dbContext.SaveChangesAsync()) > 0 ? entity : null;
         }
         public override Task<IEnumerable<User>?> AddRangeAsync(IEnumerable<User> entities)
         {

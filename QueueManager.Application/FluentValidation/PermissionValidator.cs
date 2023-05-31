@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
+using QueueManager.Domain.Models.UserModels;
 
 namespace QueueManager.Application.FluentValidation
 {
-    internal class PermissionValidator
+    public class PermissionValidator:AbstractValidator<Permission>
     {
+        public PermissionValidator()
+        {
+            RuleFor(p=>p.PermissionName).NotEmpty().Length(2,50);
+        }
     }
 }

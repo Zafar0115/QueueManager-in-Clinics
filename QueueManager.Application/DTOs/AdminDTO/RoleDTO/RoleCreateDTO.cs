@@ -9,5 +9,6 @@ namespace QueueManager.Application.DTOs.AdminDTO.RoleDTO
     public class RoleCreateDTO
     {
         public required string RoleName { get; set; }
+        public List<Guid>? PermissionIds { get; set; }
     }
 }

@@ -8,8 +8,8 @@ namespace QueueManager.Domain.Models.BusinessModels
     public class Clinic:BaseAuditableEntity
     {
         public Guid ClinicId { get; set; }
-        public required string ClinicName { get; set; }
-        public required string Location { get; set; }
-        public ICollection<DoctorClinic>? DoctorClinics { get; set; }
+        public  string? ClinicName { get; set; }
+        public string? Location { get; set; }
+        public virtual ICollection<Doctor>? Doctors { get; set; }
     }
 }

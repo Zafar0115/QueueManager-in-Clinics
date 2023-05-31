@@ -58,3 +58,5 @@ C:\Users\user\source\repos\ClinicQueueManager\QueueManager.UI\bin\Debug\net7.0\M
 C:\Users\user\source\repos\ClinicQueueManager\QueueManager.UI\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\user\source\repos\ClinicQueueManager\QueueManager.UI\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\user\source\repos\ClinicQueueManager\QueueManager.UI\bin\Debug\net7.0\System.CodeDom.dll
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.UI\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\user\source\repos\ClinicQueueManager\QueueManager.UI\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

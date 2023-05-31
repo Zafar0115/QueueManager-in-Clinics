@@ -22,7 +22,7 @@ namespace QueueManager.Domain.Models.UserModels
         public required string FullName { get; set; }
         public Guid ClinicId { get; set; }
         public Clinic? Clinic { get; set; }
-        public IList<UserRole>? UserRoles { get; set; }
-        public IList<UserRefreshToken>? UserRefreshTokens { get; set; }
+        public virtual IList<Role>? Roles { get; set; }
+        public virtual IList<UserRefreshToken>? UserRefreshTokens { get; set; }
     }
 }

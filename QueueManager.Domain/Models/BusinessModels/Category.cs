@@ -7,8 +7,8 @@ namespace QueueManager.Domain.Models.BusinessModels
     public class Category:BaseAuditableEntity
     {
         public Guid CategoryId { get; set; }
-        public required string CategoryName { get; set; }
+        public  string? CategoryName { get; set; }
 
-        public ICollection<Doctor>? Doctors { get; set; }
+        public virtual IList<Doctor>? Doctors { get; set; }
     }
 }

@@ -15,6 +15,6 @@ namespace QueueManager.Domain.Models.BusinessModels
         
         public int StarValue { get; set; }
 
-        public Doctor? Doctor { get; set; }
+        public virtual ICollection<Doctor>? Doctors { get; set; }
     }
 }

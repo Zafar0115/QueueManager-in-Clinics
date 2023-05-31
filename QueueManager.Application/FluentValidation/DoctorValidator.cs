@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using QueueManager.Application.Extensions;
 using QueueManager.Domain.Models.BusinessModels;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,11 @@ namespace QueueManager.Application.FluentValidation
     {
         public DoctorValidator()
         {
-            RuleFor(d => d.FirstName).NotEmpty().Length(3, 30);
-            RuleFor(d => d.LastName).NotEmpty().Length(3, 30);
+            RuleFor(d => d.FirstName).NotEmpty().Length(3, 30).Must(o=>o.OnlyLetters());
+            RuleFor(d => d.LastName).NotEmpty().Length(3, 30).Must(o => o.OnlyLetters());
             RuleFor(d => d.Experience).GreaterThan(0);
             RuleFor(d=>d.Email).EmailAddress();
-            RuleFor(d => d.PhoneNumber).Matches(@"^\+?\d{1,3}[-.\s]?\(?\d{1,3}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$");
+            RuleFor(d => d.PhoneNumber).Must(o=>o.IsValidPhoneNumber());
         }
     }
 }

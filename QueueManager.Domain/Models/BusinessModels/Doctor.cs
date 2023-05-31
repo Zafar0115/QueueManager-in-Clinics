@@ -10,8 +10,8 @@ namespace QueueManager.Domain.Models.BusinessModels
         public Guid DoctorId { get; set; }
         public Category? Category { get; set; }
         public float Experience { get; set; }
-        public ICollection<DoctorRating>? DoctorRatings { get; set; }
-        public ICollection<DoctorClinic>? DoctorClinics { get; set; }
+        public DoctorRating? RatingId { get; set; }
+        public virtual ICollection<Clinic>? Clinics { get; set; }
 
     }
 }

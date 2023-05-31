@@ -2,6 +2,6 @@
 {
     public class CategoryCreateDTO
     {
-        public required string CategoryName { get; set; }
+        public  string? CategoryName { get; set; }
     }
 }

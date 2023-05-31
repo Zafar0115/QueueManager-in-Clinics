@@ -1,15 +1,9 @@
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using QueueManager.Application.Abstraction;
-using QueueManager.Application.Interfaces.common;
 using QueueManager.Application.ServiceConfiguration;
-using QueueManager.Application.Services;
-using QueueManager.Infrastructure.DataAccess;
 using QueueManager.Infrastructure.DbConfiguration;
-using QueueManager.Infrastructure.Implementation.common;
 using System.Text;
 
 namespace QueueManager.UI

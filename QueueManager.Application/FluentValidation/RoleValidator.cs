@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
+using QueueManager.Application.Extensions;
+using QueueManager.Domain.Models.UserModels;
 
 namespace QueueManager.Application.FluentValidation
 {
-    internal class RoleValidator
+    public class RoleValidator : AbstractValidator<Role>
     {
+        public RoleValidator()
+        {
+            RuleFor(r => r.RoleName).NotEmpty().Length(2,50);
+        }
     }
 }

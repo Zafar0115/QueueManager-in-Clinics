@@ -1,6 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using QueueManager.Application.Abstraction;
-using QueueManager.Application.Interfaces.common;
+﻿using QueueManager.Application.Interfaces.common;
+using QueueManager.Application.Interfaces.Common;
 using System.Linq.Expressions;
 
 namespace QueueManager.Infrastructure.Implementation
@@ -14,7 +13,7 @@ namespace QueueManager.Infrastructure.Implementation
         }
         public virtual async Task<T?> AddAsync(T entity)
         {
-            _dbContext.Set<T>().Add(entity);
+            await _dbContext.Set<T>().AddAsync(entity);
             int result = await _dbContext.SaveChangesAsync();
             if (result > 0)
                 return entity;
@@ -64,28 +63,10 @@ namespace QueueManager.Infrastructure.Implementation
 
         public virtual async Task<T?> UpdateAsync(T entity)
         {
-
-            _dbContext.ChangeTracker.TrackGraph(entity, e =>
-            {
-                if (e.Entry.IsKeySet)
-                {
-                    e.Entry.State = EntityState.Modified;
-
-                }
-                else
-                {
-                    e.Entry.State = EntityState.Detached;
-                }
-            });
-
-            int result = await _dbContext.SaveChangesAsync();
-            if (result > 0)
-                return entity;
-            else
-                return null;
-
-
-
+            int result = 0;
+            _dbContext.Set<T>().Update(entity);
+            result = await _dbContext.SaveChangesAsync();
+            return result > 0 ? entity : null;
         }
     }
 }

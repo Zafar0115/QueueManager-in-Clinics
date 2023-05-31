@@ -1,50 +1,108 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using QueueManager.Application.Services.role_services;
+using QueueManager.Application.DTOs.AdminDTO.UserDTO;
+using QueueManager.Application.Interfaces.Administration;
+using QueueManager.Application.Interfaces.common;
+using QueueManager.Application.Models;
+using QueueManager.Domain.Models.BusinessModels;
 using QueueManager.Domain.Models.UserModels;
+using QueueManager.UI.Controllers.ApiController;
 
-namespace QueueManager.UI.Controllers.userrole
+namespace QueueManager.UI.Controllers.Administrator
 {
     [ApiController]
     [Route("[controller]")]
-    public class UserController : Controller
+    public class UserController : ApiControllerBase<User>
     {
-        private readonly UserService userService;
+        private readonly IUserRepository _userRepository;
+        private readonly IRoleRepository _roleRepository;
+        private readonly IClinicRepository _clinicRepository;
 
-        public UserController(UserService userService)
+        public UserController(IUserRepository userRepository, IRoleRepository roleRepository, IClinicRepository clinicRepository)
         {
-            this.userService = userService;
+            _userRepository = userRepository;
+            _roleRepository = roleRepository;
+            _clinicRepository = clinicRepository;
         }
-
-        [HttpGet("get")]
-        public async Task<IResult> GetById([FromQuery] Guid id)
-        {
-            return Results.Ok(await userService.GetById(id));
-        }
-
         [HttpPost("add")]
-        public async Task<IResult> AddAsync([FromBody] User user)
+        public async Task<ActionResult<ResponseCore<UserOutcomingDTO>>> Add([FromBody] UserCreateDTO userCreateDTO)
         {
+            User? user = _mapper.Map<User>(userCreateDTO);
+            //var validationResult = _validator.Validate(user);
+            //if (!validationResult.IsValid)
+            //    return BadRequest(new ResponseCore<UserOutcomingDTO>(false, validationResult.Errors));
 
+            Clinic? clinic = await _clinicRepository.GetById(userCreateDTO.ClinicId);
+            if (clinic is null)
+                return BadRequest(new ResponseCore<UserOutcomingDTO>(false, "clinic not found"));
 
-            return Results.Ok(await userService.AddAsync(user));
+            user.Roles = new List<Role>();
+            if (userCreateDTO.RoleIds is not null)
+                foreach (Guid id in userCreateDTO.RoleIds)
+                {
+                    Role? role = await _roleRepository.GetById(id);
+                    if (role is null)
+                        return BadRequest(new ResponseCore<UserOutcomingDTO>(false, $"RoleID: {id} not found"));
+                    user.Roles.Add(role);
+                }
+            User? userAdded = await _userRepository.AddAsync(user);
+            var mappedResult = _mapper.Map<UserOutcomingDTO>(userAdded);
+            return Ok(new ResponseCore<UserOutcomingDTO>(mappedResult));
         }
 
-        [HttpPut("Update")]
-        public async Task<IResult> Update([FromBody] User user)
+        [HttpGet("getById")]
+        public async Task<ActionResult<ResponseCore<UserOutcomingDTO>>> GetById([FromQuery] Guid id)
         {
-            User? res = await userService.UpdateAsync(user);
-            return Results.Ok(res);
+            User? user = await _userRepository.GetById(id);
+            if (user is null)
+                return BadRequest(new ResponseCore<UserOutcomingDTO>(false, $"User not found for ID:{id}"));
+            var mappedUser = _mapper.Map<UserOutcomingDTO>(user);
+            return Ok(new ResponseCore<UserOutcomingDTO>(mappedUser));
         }
+
+        [HttpGet("getall")]
+        public async Task<ActionResult<PaginatedList<UserOutcomingDTO>>> GetAll()
+        {
+            IEnumerable<User>? users = await _userRepository.GetAll();
+            var mappedUsers = _mapper.Map<IEnumerable<UserOutcomingDTO>>(users);
+            return Ok(new PaginatedList<UserOutcomingDTO>(mappedUsers.AsQueryable(), 5, 5, 5));
+        }
+
         [HttpDelete("delete")]
-        public async Task<IResult> Remove([FromBody] Guid id)
+        public async Task<ActionResult<ResponseCore<User>>> Delete([FromQuery]Guid id)
         {
-            return Results.Ok(await userService.RemoveAsync(id));
+            User? deletedUser = await _userRepository.RemoveAsync(id);
+            if (deletedUser is null) return BadRequest(new ResponseCore<UserOutcomingDTO>(false, "User not found"));
+            var mappedUser = _mapper.Map<UserOutcomingDTO>(deletedUser);
+            return Ok(new ResponseCore<UserOutcomingDTO>(mappedUser));
         }
 
-        [HttpGet("getAll")]
-        public async Task<IResult> GetAll()
+        [HttpPut("update")]
+        public async Task<ActionResult<ResponseCore<UserOutcomingDTO>>> Update([FromBody] UserUpdateDTO userUpdateDTO)
         {
-            return Results.Ok(await userService.GetAll());
+            User? user=_mapper.Map<User>(userUpdateDTO);
+            //var validationResult=_validator.Validate(user);
+            //if (!validationResult.IsValid)
+            //    return BadRequest(new ResponseCore<UserOutcomingDTO>(false, validationResult.Errors));
+            Clinic? clinic = await _clinicRepository.GetById(userUpdateDTO.ClinicId);
+            if (clinic is null)
+                return BadRequest(new ResponseCore<UserOutcomingDTO>(false, "clinic not found"));
+
+            user.Roles = new List<Role>();
+            if (userUpdateDTO.RoleIds is not null)
+                foreach (Guid id in userUpdateDTO.RoleIds)
+                {
+                    Role? role = await _roleRepository.GetById(id);
+                    if (role is null)
+                        return BadRequest(new ResponseCore<UserOutcomingDTO>(false, $"RoleID: {id} not found"));
+                    user.Roles.Add(role);
+                }
+            
+            user.Roles=user.Roles.DistinctBy(x => x.Id).ToList();
+
+            User? userUpdated = await _userRepository.UpdateAsync(user);
+            
+            var mappedResult = _mapper.Map<UserOutcomingDTO>(userUpdated);
+            return Ok(new ResponseCore<UserOutcomingDTO>(mappedResult));
         }
-    }
+     }
 }
