@@ -1,4 +1,4 @@
-﻿using QueueManager.Application.Interfaces.common;
+﻿using QueueManager.Application.Interfaces.Common;
 using QueueManager.Domain.Models.UserModels;
 
 namespace QueueManager.Application.Interfaces.Administration

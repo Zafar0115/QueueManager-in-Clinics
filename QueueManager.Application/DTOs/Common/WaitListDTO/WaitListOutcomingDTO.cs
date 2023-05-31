@@ -11,10 +11,10 @@ namespace QueueManager.Application.DTOs.Common.WaitListDTO
     public class WaitListOutcomingDTO
     {
         public Guid Id { get; set; }
-        public Guid? DoctorId { get; set; }
-        public Guid? PatientId { get; set; }
+        public Guid DoctorId { get; set; }
+        public Guid PatientId { get; set; }
         public bool IsCompleted { get; set; }
-        public DateTimeOffset? JoinedTime { get; set; }
-        public DateTimeOffset? CompletedTime { get; set; } = null;
+        public DateTimeOffset JoinedTime { get; set; }
+        public DateTimeOffset CompletedTime { get; set; }
     }
 }

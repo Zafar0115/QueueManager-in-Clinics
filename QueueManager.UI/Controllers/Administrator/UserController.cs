@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using QueueManager.Application.DTOs.AdminDTO.UserDTO;
 using QueueManager.Application.Interfaces.Administration;
-using QueueManager.Application.Interfaces.common;
+using QueueManager.Application.Interfaces.Common;
 using QueueManager.Application.Models;
 using QueueManager.Domain.Models.BusinessModels;
 using QueueManager.Domain.Models.UserModels;
@@ -77,19 +77,19 @@ namespace QueueManager.UI.Controllers.Administrator
         }
 
         [HttpPut("update")]
-        public async Task<ActionResult<ResponseCore<UserOutcomingDTO>>> Update([FromBody] UserUpdateDTO userUpdateDTO)
+        public async Task<ActionResult<ResponseCore<UserOutcomingDTO>>> Update([FromBody] UserOutcomingDTO userOutcomingDTO)
         {
-            User? user=_mapper.Map<User>(userUpdateDTO);
+            User? user=_mapper.Map<User>(userOutcomingDTO);
             //var validationResult=_validator.Validate(user);
             //if (!validationResult.IsValid)
             //    return BadRequest(new ResponseCore<UserOutcomingDTO>(false, validationResult.Errors));
-            Clinic? clinic = await _clinicRepository.GetById(userUpdateDTO.ClinicId);
+            Clinic? clinic = await _clinicRepository.GetById(userOutcomingDTO.ClinicId);
             if (clinic is null)
                 return BadRequest(new ResponseCore<UserOutcomingDTO>(false, "clinic not found"));
 
             user.Roles = new List<Role>();
-            if (userUpdateDTO.RoleIds is not null)
-                foreach (Guid id in userUpdateDTO.RoleIds)
+            if (userOutcomingDTO.RoleIds is not null)
+                foreach (Guid id in userOutcomingDTO.RoleIds)
                 {
                     Role? role = await _roleRepository.GetById(id);
                     if (role is null)

@@ -12,8 +12,8 @@ namespace QueueManager.Domain.Models.BusinessModels
         public Guid? PatientId { get; set; }
         public Patient? Patient { get; set; }
         public bool IsCompleted { get; set; }
-        public DateTimeOffset? JoinedTime { get; set; }
-        public DateTimeOffset? CompletedTime { get; set; } = null;
+        public DateTimeOffset JoinedTime { get; set; }
+        public DateTimeOffset CompletedTime { get; set; }
         public string? CustomerSatisfaction { get; set; } = null;
         public Guid ClinicId { get; set; }
         public Clinic? Clinic { get; set; }

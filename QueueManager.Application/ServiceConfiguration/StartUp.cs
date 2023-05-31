@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using QueueManager.Application.FluentValidation;
-using QueueManager.Application.Interfaces.common;
 using QueueManager.Application.Mappings;
 using QueueManager.Domain.Models.BusinessModels;
 using System.Reflection;

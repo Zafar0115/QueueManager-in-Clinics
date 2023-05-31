@@ -1,5 +1,4 @@
-﻿using QueueManager.Application.Interfaces.common;
-using QueueManager.Application.Interfaces.Common;
+﻿using QueueManager.Application.Interfaces.Common;
 using System.Linq.Expressions;
 
 namespace QueueManager.Infrastructure.Implementation

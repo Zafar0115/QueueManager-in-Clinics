@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using QueueManager.Application.DTOs.Common.CategoryDTO;
 using QueueManager.Application.DTOs.Common.ClinicDTO;
 using QueueManager.Application.Extensions;
-using QueueManager.Application.Interfaces.common;
+using QueueManager.Application.Interfaces.Common;
 using QueueManager.Application.Models;
 using QueueManager.Domain.Models.BusinessModels;
 using QueueManager.Infrastructure.Implementation;
@@ -60,6 +60,21 @@ namespace QueueManager.UI.Controllers.common
             if (deletedClinic is null)
                 return BadRequest(new ResponseCore<ClinicOutcomingDTO>(false, $"Clinic with ID: \"{id}\" not found"));
             var mappedResult = _mapper.Map<ClinicOutcomingDTO>(deletedClinic);
+            return Ok(new ResponseCore<ClinicOutcomingDTO>(mappedResult));
+        }
+
+        [HttpPut("Update")]
+        public async Task<ActionResult<ResponseCore<ClinicOutcomingDTO>>> Update([FromBody] ClinicOutcomingDTO clinicOutcomingDTO)
+        {
+            Clinic? clinic = _mapper.Map<Clinic>(clinicOutcomingDTO);
+            var validationResult = _validator.Validate(clinic);
+            if (!validationResult.IsValid)
+                return BadRequest(new ResponseCore<ClinicOutcomingDTO>(false, validationResult.Errors));
+
+            var updated = await _clinicRepository.UpdateAsync(clinic);
+            if (updated is null)
+                return BadRequest(new ResponseCore<ClinicOutcomingDTO>(false, $"Object ID: {clinic.ClinicId} not found to update"));
+            var mappedResult = _mapper.Map<ClinicOutcomingDTO>(updated);
             return Ok(new ResponseCore<ClinicOutcomingDTO>(mappedResult));
         }
     }

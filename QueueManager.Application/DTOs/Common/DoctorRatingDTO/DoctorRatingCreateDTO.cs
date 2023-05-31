@@ -8,7 +8,7 @@ namespace QueueManager.Application.DTOs.Common.DoctorRatingDTO
 {
     public class DoctorRatingCreateDTO
     {
-        public required string RatingDescription { get; set; }
+        public  string? RatingDescription { get; set; }
         public int StarValue { get; set; }
     }
 }

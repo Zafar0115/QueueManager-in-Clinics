@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QueueManager.Application.DTOs.AdminDTO.PermissionDTO
 {
-    public class PermissionUpdateDTO
+    public class PermissionOutcomingDTO
     {
         public Guid Id { get; set; }
         public required string PermissionName { get; set; }

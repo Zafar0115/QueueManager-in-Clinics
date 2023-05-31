@@ -13,9 +13,9 @@ namespace QueueManager.Application.DTOs.Common.DoctorDTO
         public required string LastName { get; set; }
         public string? PhoneNumber { get; set; }
         public string? Email { get; set; }
-        public Guid? CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
         public float Experience { get; set; }
-        public Guid? RatingId { get; set; }
+        public Guid RatingId { get; set; }
         public Guid[]? ClinicIds { get; set;}
     }
 }

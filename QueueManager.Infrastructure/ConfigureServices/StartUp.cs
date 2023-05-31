@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using QueueManager.Application.Interfaces.Administration;
-using QueueManager.Application.Interfaces.common;
 using QueueManager.Application.Interfaces.Common;
 using QueueManager.Application.JwtTokenHandler.Handlers;
 using QueueManager.Infrastructure.DataAccess;

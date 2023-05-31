@@ -1,6 +1,6 @@
 ﻿namespace QueueManager.Application.DTOs.AdminDTO.UserDTO
 {
-    public class UserUpdateDTO
+    public class UserOutcomingDTO
     {
         public Guid Id { get; set; }
 

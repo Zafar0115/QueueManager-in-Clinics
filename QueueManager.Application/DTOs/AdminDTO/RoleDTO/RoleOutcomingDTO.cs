@@ -1,6 +1,6 @@
 ﻿namespace QueueManager.Application.DTOs.AdminDTO.RoleDTO
 {
-    public class RoleUpdateDTO
+    public class RoleOutcomingDTO
     {
         public Guid Id { get; set; }
         public string? RoleName { get; set; }

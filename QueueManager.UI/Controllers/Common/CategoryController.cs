@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using QueueManager.Application.DTOs.AdminDTO.PermissionDTO;
 using QueueManager.Application.DTOs.Common.CategoryDTO;
-using QueueManager.Application.Interfaces.common;
+using QueueManager.Application.Interfaces.Common;
 using QueueManager.Application.Models;
 using QueueManager.Domain.Models.BusinessModels;
 using QueueManager.Domain.Models.UserModels;

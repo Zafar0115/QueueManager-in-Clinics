@@ -7,7 +7,7 @@ namespace QueueManager.Domain.Models.BusinessModels
     public class DoctorRating:BaseAuditableEntity
     {
         public Guid Id { get; set; }
-        public required string RatingDescription { get; set; }
+        public string? RatingDescription { get; set; }
        
         /// <summary>
         /// to rate out of five stars *****

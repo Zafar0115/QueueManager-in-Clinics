@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QueueManager.Application.Interfaces.common
+namespace QueueManager.Application.Interfaces.Common
 {
     public interface IGenericRepository<T> where T : class
     {

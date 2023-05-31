@@ -1,10 +1,7 @@
-﻿using FluentValidation;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using QueueManager.Application.DTOs.AdminDTO.PermissionDTO;
-using QueueManager.Application.DTOs.Common.CategoryDTO;
 using QueueManager.Application.Interfaces.Administration;
 using QueueManager.Application.Models;
-using QueueManager.Domain.Models.BusinessModels;
 using QueueManager.Domain.Models.UserModels;
 using QueueManager.UI.Controllers.ApiController;
 
@@ -43,7 +40,6 @@ namespace QueueManager.UI.Controllers.userrole
             Permission? permission = await _permissionRepository.GetById(id);
             if (permission is null)
                 return BadRequest(new ResponseCore<PermissionOutcomingDTO>(false, "Permission not found"));
-
             var mappedResult = _mapper.Map<PermissionOutcomingDTO>(permission);
             return Ok(new ResponseCore<PermissionOutcomingDTO>(mappedResult));
         }
@@ -53,15 +49,13 @@ namespace QueueManager.UI.Controllers.userrole
         {
             IEnumerable<Permission> permissions = await _permissionRepository.GetAll();
             IEnumerable<PermissionOutcomingDTO> mappedResult = _mapper.Map<IEnumerable<PermissionOutcomingDTO>>(permissions);
-
-
             return Ok(new PaginatedList<PermissionOutcomingDTO>(mappedResult.AsQueryable(), 5, 5, 5));
         }
 
         [HttpPut("Update")]
-        public async Task<ActionResult<ResponseCore<PermissionOutcomingDTO>>> Update([FromBody] PermissionUpdateDTO permissionUpdateDTO)
+        public async Task<ActionResult<ResponseCore<PermissionOutcomingDTO>>> Update([FromBody] PermissionOutcomingDTO permissionOutcomingDTO)
         {
-            Permission permission = _mapper.Map<Permission>(permissionUpdateDTO);
+            Permission permission = _mapper.Map<Permission>(permissionOutcomingDTO);
             var validationResult = _validator.Validate(permission);
             if (!validationResult.IsValid)
                 return BadRequest(new ResponseCore<PermissionOutcomingDTO>(false, validationResult.Errors));
@@ -85,6 +79,6 @@ namespace QueueManager.UI.Controllers.userrole
         }
 
 
-        
+
     }
 }

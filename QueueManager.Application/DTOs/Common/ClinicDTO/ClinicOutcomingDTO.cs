@@ -12,7 +12,7 @@ namespace QueueManager.Application.DTOs.Common.ClinicDTO
     public class ClinicOutcomingDTO
     {
         public Guid ClinicId { get; set; }
-        public required string ClinicName { get; set; }
-        public required string Location { get; set; }
+        public  string? ClinicName { get; set; }
+        public string? Location { get; set; }
     }
 }

@@ -76,16 +76,16 @@ namespace QueueManager.UI.Controllers.userrole
         }
 
         [HttpPut("update")]
-        public async Task<ActionResult<ResponseCore<RoleOutcomingDTO>>> Update([FromBody] RoleUpdateDTO roleUpdateDTO)
+        public async Task<ActionResult<ResponseCore<RoleOutcomingDTO>>> Update([FromBody] RoleOutcomingDTO roleOutcomingDTO)
         {
-            Role role = _mapper.Map<Role>(roleUpdateDTO);
+            Role role = _mapper.Map<Role>(roleOutcomingDTO);
             ValidationResult validationResult = _validator.Validate(role);
             if (!validationResult.IsValid)
                 return BadRequest(new ResponseCore<RoleOutcomingDTO>(false, validationResult.Errors));
           
            role.Permissions=new List<Permission>();
-            if(roleUpdateDTO.PermissionIds is not null)
-            foreach (Guid id in roleUpdateDTO.PermissionIds)
+            if(roleOutcomingDTO.PermissionIds is not null)
+            foreach (Guid id in roleOutcomingDTO.PermissionIds)
             {
                    Permission? permission= await _permissionRepository.GetById(id);
                     if (permission is null)
