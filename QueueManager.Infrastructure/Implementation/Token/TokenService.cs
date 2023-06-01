@@ -22,60 +22,17 @@ namespace QueueManager.Application.JwtTokenHandler.Handlers
             _userRepository = userRepository;
             _configuration = configuration;
         }
-        public async Task<Token?> GenerateAccessTokenAsync(UserCredentials credentials)
+        public Task<Token?> GenerateAccessTokensAsync(UserCredentials credentials)
         {
-
-            IQueryable<User>? users = await _userRepository.Get(o =>
-                                                              o.UserName == credentials.UserName &&
-                                                              o.Password == credentials.Password.ComputeHash() &&
-                                                              o.PhoneNumber == credentials.PhoneNumber);
-            User? user = users.FirstOrDefault();
-            if (user == null) return null;
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name,credentials.UserName),
-                new Claim(ClaimTypes.GivenName,user.FullName),
-                new Claim("PhoneNumber",credentials.PhoneNumber),
-                new Claim("Password",credentials.Password),
-            };
-            User? userDetails = users.Include(u => u.Roles)?
-                                                     .ThenInclude(r => r.Permissions)?
-                                                     .FirstOrDefault();
-            ICollection<string>? permissions = new List<string>();
-            if (userDetails is not null && userDetails.Roles is not null)
-                foreach (Role role in userDetails.Roles)
-                {
-                    foreach (Permission permission in role.Permissions)
-                    {
-                        permissions.Add(permission.PermissionName);
-                    }
-                }
-            if (permissions is not null)
-                permissions = permissions.Distinct().ToList();
-
-            foreach (string item in permissions)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, item));
-            }
-
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             int.TryParse(_configuration["Jwt:AccessExpirationTime"], out int lifetime);
-
-            SecurityToken token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],
-                audience: _configuration["Jwt:Audience"],
-                expires: DateTime.UtcNow.AddMinutes(lifetime),
-                claims: claims,
-                signingCredentials: signingCredentials
-                );
-
-            string? accessToken = new JwtSecurityTokenHandler().WriteToken(token);
-            string? refreshToken = GenerateRefreshToken();
-            return new Token() { AccessToken = accessToken, RefreshToken = refreshToken };
+            return GenerateToken(credentials, lifetime);
         }
 
-
+        public  Task<Token?> GenerateRefreshTokens(UserCredentials credentials)
+        {
+            int.TryParse(_configuration["Jwt:RefreshExpirationTime"], out int lifetime);
+            return GenerateToken(credentials, lifetime);
+        }
         public ClaimsPrincipal? GetPrincipalFromExpiredToken(string token)
         {
 
@@ -101,6 +58,54 @@ namespace QueueManager.Application.JwtTokenHandler.Handlers
 
             return principal;
 
+        }
+
+        private async Task<Token?> GenerateToken(UserCredentials credentials,int lifeTime)
+        {
+            IQueryable<User>? users = await _userRepository.Get(o =>
+                                                             o.UserName == credentials.UserName &&
+                                                             o.Password == credentials.Password.ComputeHash());
+            User? user = users.FirstOrDefault();
+            if (user == null) return null;
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name,credentials.UserName),
+                new Claim(ClaimTypes.GivenName,user.FullName),
+            };
+            User? userDetails = users.Include(u => u.Roles)?
+                                                     .ThenInclude(r => r.Permissions)?
+                                                     .FirstOrDefault();
+            ICollection<string>? permissions = new List<string>();
+            if (userDetails is not null && userDetails.Roles is not null)
+                foreach (Role role in userDetails.Roles)
+                {
+                    foreach (Permission permission in role.Permissions)
+                    {
+                        permissions.Add(permission.PermissionName);
+                    }
+                }
+            if (permissions is not null)
+                permissions = permissions.Distinct().ToList();
+
+            foreach (string item in permissions)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, item));
+            }
+
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            SecurityToken token = new JwtSecurityToken(
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
+                expires: DateTime.UtcNow.AddMinutes(lifeTime),
+                claims: claims,
+                signingCredentials: signingCredentials
+                );
+
+            string? accessToken = new JwtSecurityTokenHandler().WriteToken(token);
+            string? refreshToken = GenerateRefreshToken();
+            return new Token() { AccessToken = accessToken, RefreshToken = refreshToken };
         }
         private string GenerateRefreshToken()
         {

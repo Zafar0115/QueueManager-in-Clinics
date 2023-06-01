@@ -16,7 +16,6 @@ namespace QueueManager.Application.Models
             TotalCount = count;
             Items = items;
         }
-
         public bool HasPreviousPage => PageNumber > 1;
 
         public bool HasNextPage => PageNumber < TotalPages;

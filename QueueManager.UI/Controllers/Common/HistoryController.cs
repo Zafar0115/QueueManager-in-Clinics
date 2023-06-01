@@ -19,6 +19,7 @@ namespace QueueManager.UI.Controllers.common
             _historyRepository = historyRepository;
         }
 
+        [HttpPost("Create")]
         public async Task<ActionResult<ResponseCore<HistoryOutcomingDTO>>> Create([FromBody] HistoryCreateDTO historyCreateDTO)
         {
             History history = _mapper.Map<History>(historyCreateDTO);

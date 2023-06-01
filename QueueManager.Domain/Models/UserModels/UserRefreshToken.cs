@@ -10,7 +10,7 @@ namespace QueueManager.Domain.Models.UserModels
         public Guid UserId { get; set; }
         public User? User { get; set; }
         public string? RefreshToken { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
         public DateTimeOffset ExpiryDate { get; set; }
     }
 }

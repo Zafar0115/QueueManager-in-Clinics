@@ -21,6 +21,8 @@ namespace QueueManager.Infrastructure.DataAccess
         {
             modelBuilder.Entity<Role>().Navigation(r => r.Permissions).AutoInclude();
             modelBuilder.Entity<User>().Navigation(u=>u.Roles).AutoInclude();
+            modelBuilder.Entity<UserRefreshToken>().Navigation(u => u.User).AutoInclude();
+                
             base.OnModelCreating(modelBuilder);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

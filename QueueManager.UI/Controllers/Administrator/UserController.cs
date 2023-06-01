@@ -27,9 +27,9 @@ namespace QueueManager.UI.Controllers.Administrator
         public async Task<ActionResult<ResponseCore<UserOutcomingDTO>>> Add([FromBody] UserCreateDTO userCreateDTO)
         {
             User? user = _mapper.Map<User>(userCreateDTO);
-            //var validationResult = _validator.Validate(user);
-            //if (!validationResult.IsValid)
-            //    return BadRequest(new ResponseCore<UserOutcomingDTO>(false, validationResult.Errors));
+            var validationResult = _validator.Validate(user);
+            if (!validationResult.IsValid)
+                return BadRequest(new ResponseCore<UserOutcomingDTO>(false, validationResult.Errors));
 
             Clinic? clinic = await _clinicRepository.GetById(userCreateDTO.ClinicId);
             if (clinic is null)
